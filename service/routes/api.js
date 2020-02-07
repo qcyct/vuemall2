@@ -77,6 +77,12 @@ router.post('/login', async (ctx)=>{
         }
     }
 })
+//导入首页数据
+router.get('/index',async(ctx)=>{
+    let data = fs.readFileSync(path.join(__dirname,'../data_json/index.json'),'utf8')
+    data = JSON.parse(data); 
+    ctx.body = data
+})
 //导入商品数据
 router.get('/insertAllGoods',async(ctx)=>{
     let data = fs.readFileSync(path.join(__dirname,'../data_json/newGoods.json'),'utf8')
